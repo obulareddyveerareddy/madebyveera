@@ -1,0 +1,20 @@
+
+
+$arvo-slab: 'Arvo', serif;
+$open-sans: 'Open Sans', sans-serif;
+$indie-flower:'Slabo';
+
+#contactPage{
+  .heading-name{
+    font-family: $arvo-slab;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  .heading-address{
+    font-family: $indie-flower;
+    font-weight: 600;
+    padding-left: 2.5rem;
+    font-size: 16px;
+    margin: 0px;
+  }
+}

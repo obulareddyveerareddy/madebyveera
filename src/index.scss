@@ -1,0 +1,20 @@
+
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Lora);
+
+$roboto-slab: Pacifico;
+$lora: Lora;
+
+
+.site-title{
+    font-family: $roboto-slab;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.konten-title{
+    font-family: $lora;
+    font-weight: bold;
+    font-size: 20px;
+    margin:0px;
+}

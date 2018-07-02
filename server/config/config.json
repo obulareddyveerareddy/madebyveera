@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "madebyveera",
+    "password": "veera@168",
+    "database": "konten",
+    "host": "localhost",
+    "dialect": "sqlite",
+    "storage": "./db.development.sqlite",
+    "seed":{
+      "dialect": "mysql"
+    }
+  },
+  "test": {
+      "dialect": "sqlite",
+      "storage": "./db.test.sqlite"
+  },
+  "production": {
+      "dialect": "sqlite",
+      "storage": "./db.production.sqlite"
+  }
+}
