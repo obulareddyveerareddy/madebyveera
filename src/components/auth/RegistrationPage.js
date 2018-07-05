@@ -56,7 +56,7 @@ class RegistrationPage extends React.Component{
                     <div className="col offset-s3 s6 z-depth-4 card-panel">
                         <form className="login-form">
                             <div className="row">
-                                <div className="input-field col s12 center">
+                                <div className="input-field col s12 center" style={{marginTop: '1rem', color:'black'}}>
                                     <WebAppTitle />
                                     <KontenTitle />
                                 </div>

@@ -35,9 +35,9 @@ module.exports = function () {
         },{
             method:'GET',
             path:'/api/auth/details/user',
-            handler:function(request, reply){
-                console.log('~~~~~~~~~~ /api/auth/details/user ~~~~~~~~~~ ', request.auth);
-                return {user:'veera'}
+            handler:async function(request, reply){
+                let response = await authService.fetchUserDetailByEmail(request.auth.credentials);
+                return response
             }
         }
     ];

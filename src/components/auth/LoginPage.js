@@ -52,7 +52,7 @@ class LoginPage extends React.Component{
                     <div className="col offset-s4 s4 z-depth-4 card-panel">
                         <form className="login-form">
                             <div className="row">
-                                <div className="input-field col s12 center">
+                                <div className="input-field col s12 center" style={{marginTop: '1rem', color:'black'}}>
                                     <WebAppTitle />
                                     <KontenTitle />
                                 </div>

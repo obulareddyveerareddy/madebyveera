@@ -3,7 +3,6 @@ var jwt     = require("jsonwebtoken");
 let authService = {};
 
 authService.validateLoginUser = async function(payload){
-    console.log('~~~~~~~~~~~~ >>> 2) authService.validateLoginUser <<< ~~~~~~~~~~~~', payload);
     return models.User.count({
         where: {
             email: payload.email,
@@ -15,12 +14,10 @@ authService.validateLoginUser = async function(payload){
 }
 
 authService.getToken = async function(payload){
-    console.log('~~~~~~~~~~~~ >>> 2) authService.getToken <<< ~~~~~~~~~~~~', payload);
     return jwt.sign(payload, 'madeby949111veera@5322', { algorithm: 'HS256', expiresIn: "1h" } );
 }
 
 authService.validateToken = async function(email, password){
-    console.log('~~~~~~~~~~~~ >>> 2) authService.validateToken <<< ~~~~~~~~~~~~', email, password);
     return models.User.count({
         where: {
             email: email,
@@ -32,7 +29,6 @@ authService.validateToken = async function(email, password){
 }
 
 authService.getUserDetailsByEmail = async function(emailParam){
-    console.log('~~~~~~~~~~~~ >>> 2) authService.getUserDetailsByEmail <<< ~~~~~~~~~~~~', emailParam);
     return models.User.find({
         where: {
             email: emailParam
@@ -41,7 +37,6 @@ authService.getUserDetailsByEmail = async function(emailParam){
 }
 
 authService.checkIsEmailExists = async function(emailParam){
-    console.log('~~~~~~~~~~~~ >>> 2) authService.checkIsEmailExists <<< ~~~~~~~~~~~~', emailParam);
     return models.User.count({
         where: {
             email: emailParam
@@ -52,7 +47,6 @@ authService.checkIsEmailExists = async function(emailParam){
 }
 
 authService.addNewUser = async function(payload){
-    console.log('~~~~~~~~~~~~ >>> 3) authService.addNewUser <<< ~~~~~~~~~~~~ ', payload);
     return  models.User.create({
                 firstName: payload.firstName,
                 lastName: payload.lastName,
@@ -60,6 +54,14 @@ authService.addNewUser = async function(payload){
                 email: payload.email,
                 password: payload.password
             });
+}
+
+authService.fetchUserDetailByEmail = async function(credentials){
+    return models.User.find({
+        where: {
+            email: credentials.email
+        }
+    });
 }
 
 module.exports = authService;

@@ -7,7 +7,7 @@ import 'font-awesome/scss/font-awesome.scss';
 
 import ProfileFeatureRouter from './features/profile/ProfileFeatureRouter';
 import AuthWcRouter         from './components/auth/WcRouter';
-import KontenWcRouter       from './components/konten/WcRouter';
+import KontenWcRouter       from './components/konten/WcRouterLink';
 import configureStore       from './AppStore';
 const store = configureStore();
 

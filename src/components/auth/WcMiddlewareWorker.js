@@ -9,9 +9,18 @@ export const REQ_AUTH_LOGIN_USER        = "REQ_AUTH_LOGIN_USER";
 export const RES_AUTH_LOGIN_USER        = "RES_AUTH_LOGIN_USER";
 export const ERR_AUTH_LOGIN_USER        = "ERR_AUTH_LOGIN_USER";
 
+export const REQ_KONTEN_TOKEN_USERDETAILS  = "REQ_KONTEN_TOKEN_USERDETAILS";
+export const RES_KONTEN_TOKEN_USERDETAILS  = "RES_KONTEN_TOKEN_USERDETAILS";
+export const ERR_KONTEN_TOKEN_USERDETAILS  = "ERR_KONTEN_TOKEN_USERDETAILS";
+
 export function actionAuthRegisterNewUser(payload){
     console.log('2) WcMiddlewareWorker <::> actionAuthRegisterNewUser ~~~ REQ_AUTH_REGISTER_NEWUSER ', payload);
     return { type: REQ_AUTH_REGISTER_NEWUSER, payload};
+}
+
+export function actionGetKontenTokenUserDetails(){
+    console.log('2) WcMiddlewareWorker <::> actionGetKontenTokenUserDetails ~~~ REQ_KONTEN_TOKEN_USERDETAILS ');
+    return { type: REQ_KONTEN_TOKEN_USERDETAILS};
 }
 
 export function actionAuthLoginUser(payload){
@@ -26,6 +35,8 @@ export function authReducer(state = {}, action){
             return action.payload;
         case RES_AUTH_LOGIN_USER:
             console.log('4) WcMiddlewareWorker <::> authReducer ~~~ RES_AUTH_LOGIN_USER ', action.payload);
+            return action.payload;
+        case RES_KONTEN_TOKEN_USERDETAILS:
             return action.payload;
         default:
             return state;
@@ -53,5 +64,18 @@ export function* sagaAuthLoginUser(){
         yield put({type: 'RES_AUTH_LOGIN_USER', payload:response.data});
     }catch(error){
         yield put({type: 'ERR_AUTH_LOGIN_USER', error});
+    }
+}
+
+export function* sagaGetKontenTokenUserDetails(){
+    try{
+        yield take('REQ_KONTEN_TOKEN_USERDETAILS');
+        console.log('3) WcMiddlewareWorker <::> sagaAuthRegisterNewUser     ~~~ REQ_KONTEN_TOKEN_USERDETAILS ');
+        let response = yield call(authApiCalls.getLoginUserDetails);
+        console.log('3.1) WcMiddlewareWorker <::> sagaAuthRegisterNewUser   ~~~ call(registerNewUser(payload)) ', response);
+        yield put({type: 'RES_KONTEN_TOKEN_USERDETAILS', payload:response.data});
+    }catch(error){
+        console.log('3.2) WcMiddlewareWorker <::> sagaGetKontenTokenUserDetails ~~~ ERR_401_UNAUTHORIZED ');
+        yield put({type: 'ERR_401_UNAUTHORIZED', error});
     }
 }

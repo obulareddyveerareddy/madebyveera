@@ -28,6 +28,7 @@ export function* sagaGetKontenTokenUserDetails(){
         console.log('3.1) WcMiddlewareWorker <::> sagaAuthRegisterNewUser   ~~~ call(registerNewUser(payload)) ', response);
         yield put({type: 'RES_KONTEN_TOKEN_USERDETAILS', payload:response.data});
     }catch(error){
-        yield put({type: 'ERR_KONTEN_TOKEN_USERDETAILS', error});
+        console.log('3.2) WcMiddlewareWorker <::> sagaGetKontenTokenUserDetails ~~~ ERR_401_UNAUTHORIZED ');
+        yield put({type: 'ERR_401_UNAUTHORIZED', error});
     }
 }

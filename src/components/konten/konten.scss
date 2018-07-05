@@ -1,0 +1,49 @@
+#konten{
+    background-color: transparent !important;
+    
+    .sidebar-nav-btn {
+        font-size: 28px;
+        padding-left: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    
+    .sidenav-trigger{
+        display:block;
+    }
+    
+    .content-container{
+        margin-left: 20rem;
+        padding: 1rem;
+    }
+    
+    .sidenav-bars{
+        display:none;
+    }
+    /* ----------- Non-Retina Screens ----------- */
+    @media screen 
+      and (max-width: 992px) {
+        .content-container{
+            margin-left: 0px;
+            padding: 1rem;
+        }
+    
+        .sidenav-bars{
+            display:block;
+        }
+    }
+    
+    /* -------------------------------------------- */
+}
+.sidenav{
+    z-index: -1;
+    background-color: transparent !important;
+}
+
+.sidenav {
+    margin-top: 4.29rem;
+}
+
+nav{
+    background-color: transparent !important;
+}

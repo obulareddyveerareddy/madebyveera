@@ -21,10 +21,10 @@ const validate = async function (decoded, request) {
     console.log('~~~~~~~~~~>>> Token Validation --- ', decoded);
     let response = await authService.validateToken(decoded.email, decoded.password);
     if (response > 0) {
-      return { isValid: false };
+      return { isValid: true };
     }
     else {
-      return { isValid: true };
+      return { isValid: false };
     }
 };
 
