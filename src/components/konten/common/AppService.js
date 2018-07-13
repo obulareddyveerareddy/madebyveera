@@ -15,7 +15,6 @@ class AppService extends React.Component{
     }
     
     componentWillMount(){
-        console.log('Organization componentWillMount --- ',this.state);
         $(document).ready(function() {
             M.Collapsible.init($('.collapsible'), {});
         });

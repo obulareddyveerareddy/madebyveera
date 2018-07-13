@@ -67,11 +67,7 @@ class CalenderMonthView extends React.Component{
     setMonthlyCalenderParams(currentYear, currentMonth){
         var noOfDaysByMonth = [];
         var noOfDays        = moment(currentYear+"-"+moment().month(currentMonth).format("M"), "YYYY-MM").daysInMonth();
-        console.log('~~~~~~~~~~~~~~~~ setMonthlyCalenderParams(..) >>>  ', currentYear, currentMonth, moment().month(currentMonth).format("M"));
-        console.log(currentYear+'-'+moment().month(currentMonth).format("M").toString()+'-01');
         var startDayIndex   = moment(currentYear+'-'+moment().month(currentMonth).format("M").toString()+'-01').day();
-        console.log('~~~~! startDayIndex ', startDayIndex);
-        console.log('moment.weekdays() ---- ', moment.weekdays());
         for(let index=0; index<startDayIndex; index++){
             noOfDaysByMonth.push('--');
         }
@@ -95,7 +91,6 @@ class CalenderMonthView extends React.Component{
         event.preventDefault();
         let monthIndex  = this.state.months.indexOf(this.state.selectedMonth);
         let currentYear = this.state.selectedYear;
-        console.log('Forward to next month ~~~~~~~~ >>> ', this.state.months, this.state.selectedMonth, this.state.selectedYear, monthIndex);
         switch(type){
             case 'forward':
                 monthIndex++;
@@ -118,7 +113,6 @@ class CalenderMonthView extends React.Component{
         let currentMonth = this.state.months[monthIndex];
         this.setState({selectedYear:currentYear});
         this.setState({selectedMonth:currentMonth});
-        console.log('~~~~~~~~~~~ calling setMonthlyCalenderParams.. ', currentYear, currentMonth);
         this.setMonthlyCalenderParams(currentYear, currentMonth);
     }
     

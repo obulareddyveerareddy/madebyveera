@@ -17,7 +17,6 @@ class OrgDashboardPage extends React.Component{
         }
     }
     componentWillMount(){
-        console.log('Organization componentWillMount --- ',this.state);
         $(document).ready(function() {
             M.updateTextFields();
         });
@@ -25,11 +24,8 @@ class OrgDashboardPage extends React.Component{
     }
     
     componentWillReceiveProps(nextProps){
-        console.log('Organization componentWillReceiveProps --- ',nextProps);
         if(nextProps.auth){
-            console.log('1 Organization componentWillReceiveProps(.) --- ',nextProps.auth);
             this.setState({auth: nextProps.auth});
-            console.log('2 Organization componentWillReceiveProps(.) --- ',this.state);
         }
     }
     

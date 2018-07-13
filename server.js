@@ -18,7 +18,6 @@ const server = Hapi.server({
 });
 
 const validate = async function (decoded, request) {
-    console.log('~~~~~~~~~~>>> Token Validation --- ', decoded);
     let response = await authService.validateToken(decoded.email, decoded.password);
     if (response > 0) {
       return { isValid: true };
@@ -41,7 +40,6 @@ const init = async () => {
                                         });
   
     server.ext('onRequest', function(request, replay){
-      console.log('request received : '+ request.path);
       return replay.continue;
     });
     server.auth.default('jwt');
@@ -64,8 +62,6 @@ const init = async () => {
     for (var route in routes) {
         server.route(routes[route]);
     }
-    
-    console.log(`Server running at: ${server.info.uri}`);
 };
 
 process.on('unhandledRejection', (err) => {

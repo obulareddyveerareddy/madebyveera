@@ -11,7 +11,6 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     registerNewUser:(newUser)=>{
-      console.log('~~~~~~~~~~~~ registerNewUser ', newUser);
       dispatch(actionAuthRegisterNewUser(newUser));
     }
   }

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const breadcrumbs = ({entities}) =>{
-    console.log('~~~~~~~~~~~ breadcrumb ', entities);
     return(
         <div id="breadcrumb">
             <div style={{marginLeft:'2rem'}}>

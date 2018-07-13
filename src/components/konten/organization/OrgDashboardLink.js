@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchOrganizationDetails:function(auth){
-      console.log('~~~~~~~~~~~~~~~~~ 1) fetchOrganizationDetails ~~~~~~~~~~~~~~~~~', auth);
       dispatch(fetchOrganizationDetails(auth));
     }
   }

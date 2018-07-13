@@ -26,7 +26,6 @@ class LoginPage extends React.Component{
         let changeVals = {};
         changeVals[key] = event.target.value;
         this.setState(changeVals);
-        console.log(this.state);
     }
     
     componentWillReceiveProps(nextProps){

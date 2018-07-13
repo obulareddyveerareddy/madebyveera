@@ -28,13 +28,11 @@ export default class AuthComponentRouter extends React.Component {
     }
     
     componentWillMount() {
-        console.log('~~~~~~~~~~~~~>> AuthComponentRouter componentWillMount >>> ', this.props.history);
         if(this.props.history && this.props.history.location){
             this.setState({activeItem:this.props.history.location.pathname});
             this.setBreadCrumbs(this.props.history.location);
         }
         this.unlisten = this.props.history.listen((location, action) => {
-            console.log("on route change --- ", location, action);
             this.setState({activeItem: location.pathname});
             this.setBreadCrumbs(this.props.history.location);
         });
@@ -51,9 +49,7 @@ export default class AuthComponentRouter extends React.Component {
         var lastIndexValue  = _.lastIndexOf(location.pathname.toLowerCase().split(""), '/') + 1;
         var breadcrumbWords = _.words(location.pathname);
         var displayName     = breadcrumbWords[breadcrumbWords.length - 1];
-        console.log('~~~~~~~~~~ *** ', _.words(location.pathname));
         breadcrumbEntitiesCopy.push({isActive:true, pathname:location.pathname, displayName:_.startCase(displayName)});
-        console.log('~~~~~~~~~~ ^^^ setBreadCrumbs ',location, lastIndexValue, displayName, breadcrumbEntitiesCopy);
         this.setState({breadcrumbEntities:breadcrumbEntitiesCopy})
     }
     

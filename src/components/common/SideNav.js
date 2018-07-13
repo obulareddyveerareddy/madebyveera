@@ -6,7 +6,6 @@ import SubTitle         from './SubTitle';
 const webAppTitle = ({auth, activeItem}) =>{
     
     var setActiveItem = (tag) =>{
-        console.log('setActiveItem ~~~>>> ', activeItem, tag);
         if(activeItem === tag){
             return {backgroundColor:'#129dde'};
         }
