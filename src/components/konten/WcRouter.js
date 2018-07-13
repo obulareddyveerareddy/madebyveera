@@ -3,21 +3,62 @@ import $                from 'jquery/dist/jquery';
 import M                from "materialize-css/dist/js/materialize.min.js";
 import {Switch, Route}  from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
-import WebAppTitle      from './../common/WebAppTitle';
-import SubTitle         from './../common/SubTitle';
 import * as _           from 'lodash';
+import bootstrap        from 'bootstrap';
 import 'react-toastify/dist/ReactToastify.css';
 import './konten.scss';
 
+import SideNav          from './../common/SideNav';
+import Breadcrumbs      from './../common/Breadcrumbs';
 import DashboardLink    from './dashboard/DashboardLink';
+import CalenderLink     from './calender/CalenderLink';
+import OrgDashboardLink from './organization/OrgDashboardLink';
 
 export default class AuthComponentRouter extends React.Component {
     
     constructor(props){
         super(props);
         this.state = {
-            auth:this.props.auth
+            auth:this.props.auth,
+            activeItem:'/konten/dashboard',
+            breadcrumbEntities:[]
         }
+        
+        this.setBreadCrumbs = this.setBreadCrumbs.bind(this);
+    }
+    
+    componentWillMount() {
+        console.log('~~~~~~~~~~~~~>> AuthComponentRouter componentWillMount >>> ', this.props.history);
+        if(this.props.history && this.props.history.location){
+            this.setState({activeItem:this.props.history.location.pathname});
+            this.setBreadCrumbs(this.props.history.location);
+        }
+        this.unlisten = this.props.history.listen((location, action) => {
+            console.log("on route change --- ", location, action);
+            this.setState({activeItem: location.pathname});
+            this.setBreadCrumbs(this.props.history.location);
+        });
+        this.props.getTokenUserDetails();
+    }
+    
+    setBreadCrumbs(location){
+        let breadcrumbEntitiesCopy = [];
+        
+        _.forEach(this.state.breadcrumbEntitiesCopy, (item)=>{
+            item.isActive = false;
+            breadcrumbEntitiesCopy.push(item);
+        });
+        var lastIndexValue  = _.lastIndexOf(location.pathname.toLowerCase().split(""), '/') + 1;
+        var breadcrumbWords = _.words(location.pathname);
+        var displayName     = breadcrumbWords[breadcrumbWords.length - 1];
+        console.log('~~~~~~~~~~ *** ', _.words(location.pathname));
+        breadcrumbEntitiesCopy.push({isActive:true, pathname:location.pathname, displayName:_.startCase(displayName)});
+        console.log('~~~~~~~~~~ ^^^ setBreadCrumbs ',location, lastIndexValue, displayName, breadcrumbEntitiesCopy);
+        this.setState({breadcrumbEntities:breadcrumbEntitiesCopy})
+    }
+    
+    componentWillUnmount() {
+        this.unlisten();
     }
     
     componentDidMount(){
@@ -25,8 +66,6 @@ export default class AuthComponentRouter extends React.Component {
     }
     
     componentWillReceiveProps(nextProps){
-        console.log('~~~~~~~~~~~ >>> errorHandler <<< ~~~~~~~~~~~',nextProps);
-        
         if(_.has(nextProps, 'errorHandler')){
             switch(nextProps.errorHandler.statusCode){
                 case 401:
@@ -39,56 +78,24 @@ export default class AuthComponentRouter extends React.Component {
         if(_.has(nextProps, 'auth')){
             this.setState({auth:nextProps.auth});
         }
-        
-    }
-    
-    
-    componentWillMount(){
-        console.log('~~~~~~~~~~~~~~~~~~>>> dashboardpage@componentWillMount <<<~~~~~~~~~~~~~~~~~~');
-        this.props.getTokenUserDetails();
     }
 
     render() {
         const {auth} = this.state;
-        console.log('~~~~~~~~~~~~~>>> ', auth);
         return (
             <div id="konten">
                 <ToastContainer/>
                 <div style={{display:'flex', flexDirection:'column'}}>
-                    <div className="navbar-fixed">
-                        <nav style={{backgroundImage:'url("./assets/user-profile-bg.jpg")', backgroundRepeat:'no-repeat'}}>
-                            <div className="nav-wrapper">
-                                <span className="brand-logo" style={{fontSize:'1rem', display:'flex', justifyContent:'space-between', width:'100%', marginLeft:'0.4rem'}}>
-                                    <WebAppTitle />
-                                    <a href="#" data-target="slide-out" class="sidenav-trigger sidenav-bars" style={{color:'#000'}}><i class="fa fa-bars fa-3x"></i></a>
-                                </span>
-                            </div>
-                            <ul id="slide-out" className="sidenav sidenav-fixed">
-                                <li>
-                                    <div className="user-view" style={{backgroundImage:'url("./assets/tab-bg.jpg")', backgroundRepeat:'no-repeat'}}>
-                                        <SubTitle title="Konten" iconClass="fa fa-university" />
-                                        <div style={{paddingLeft:'4rem'}}>
-                                            <a href="#user"><img className="circle" src="./assets/avatar.jpg" /></a>
-                                        </div>
-                                        <div style={{paddingLeft:'1rem'}}>
-                                        <a href="#name"><span className="white-text name">{auth.firstName+' '+auth.lastName}</span></a>
-                                        <a href="#email"><span className="white-text email">{auth.email}</span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="#!">First Link With Icon</a></li>
-                                <li><a href="#!">Second Link</a></li>
-                                <li><div className="divider"></div></li>
-                                <li><a className="subheader">Subheader</a></li>
-                                <li><a className="waves-effect" href="#!">Third Link With Waves</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div className="content-container">
-                        
-                        <Switch>
-                            <Route path="/konten/dashboard"       exact component={DashboardLink} />
-                        </Switch>
+                    <SideNav auth={auth} activeItem={this.state.activeItem} />
+                    <div style={{display:'flex', flexDirection:'column'}}>
+                        <Breadcrumbs entities={this.state.breadcrumbEntities} />
+                        <div className="content-container">
+                            <Switch>
+                                <Route path="/konten/config/organization"     exact component={OrgDashboardLink} />
+                                <Route path="/konten/dashboard"               exact component={DashboardLink} />
+                                <Route path="/konten/calender"                exact component={CalenderLink} />
+                            </Switch>
+                        </div>
                     </div>
                 </div>
             </div>

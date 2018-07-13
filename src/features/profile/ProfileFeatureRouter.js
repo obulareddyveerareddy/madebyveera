@@ -20,7 +20,7 @@ class ProfileFeatureRouter extends React.Component{
     return(
       <div className="container-on">
         <div className="navbar-fixed">
-            <nav style={{backgroundImage:"url('./assets/user-profile-bg.jpg')", backgroundRepeat:"no-repeat"}}>
+            <nav style={{backgroundImage:"url('./assets/user-profile-bg.jpg')", backgroundRepeat:"no-repeat", backgroundSize: 'cover'}}>
                 <div id="profile-page-header" className="card">
                   <div className="card-content" style={{padding:'0px'}}>
                     <div className="row" style={{display:'flex'}}>

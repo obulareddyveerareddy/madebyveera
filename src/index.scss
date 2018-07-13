@@ -1,10 +1,22 @@
 
 @import url(https://fonts.googleapis.com/css?family=Pacifico);
 @import url(https://fonts.googleapis.com/css?family=Lora);
+@import url(https://fonts.googleapis.com/css?family=Archivo);
 
 $roboto-slab: Pacifico;
 $lora: Lora;
+$karla: Archivo;
 
+body{
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #23282c;
+    text-align: left;
+    background-color: #f9f9f9;
+}
 
 .site-title{
     font-family: $roboto-slab;
@@ -20,13 +32,32 @@ $lora: Lora;
 }
     
 .sub-title{
-    font-family: Pacifico;
-    font-weight: bold;
-    font-size: 24px;
+    font-family: $roboto-slab;
+    // font-weight: bold;
+    //font-size: 16px;
 }
 
 .sub-title a{
-    font-size: 52px;
+    font-size: 36px;
+}
+
+.user-view {
+    .fullName{
+        font-family: $lora;
+        font-size: 12px;
+    }
+    
+    .email{
+        font-family: $lora;
+        font-size: 8px;
+    }
+    
+    #user a {
+        padding:0px;
+        color:#000 !important;
+        font-family: $karla;
+        font-size:18px;
+    }
 }
 
 #profile-page-header{
@@ -34,3 +65,8 @@ $lora: Lora;
     box-shadow: none;
     background-color: transparent !important;
 }
+
+.pull--right{
+    float:right;
+}
+

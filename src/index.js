@@ -2,6 +2,7 @@ import React            from 'react';
 import ReactDOM         from 'react-dom';
 import {Provider}       from 'react-redux';
 import {HashRouter, Switch, Route}      from 'react-router-dom';
+import $                from 'jquery/dist/jquery';
 import './index.scss';
 import 'font-awesome/scss/font-awesome.scss';
 

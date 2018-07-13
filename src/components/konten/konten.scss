@@ -1,5 +1,45 @@
 #konten{
-    background-color: transparent !important;
+    nav {
+        color: #fff;
+        background-color: #129dde !important;
+        width: 100%;
+        height: 56px;
+        line-height: 56px;
+    }
+    /*
+    .tab a.active {
+      color:rgb(252, 234, 37)!important;
+      background-color:#129dde!important;
+    }
+    .tabs .tab a:hover {
+      background-color: #f9f9f9 !important;
+      color:#000 !important;
+    }
+    .tabs .tab a {
+      color: #efebe9!important;
+    }
+    .tabs .indicator{
+      background-color:#FFFFFF!important;
+    }
+    **/
+    
+    .sidenav{
+        width: 240px;
+        margin-top: 3.8rem;
+        
+        @import 'bootstrap/scss/bootstrap.scss';
+    }
+    
+    .sidenav .user-view {
+        padding-top:32px;
+        padding-right:12px;
+        padding-left:12px;
+    }
+    
+    .sidenav li>a{
+        padding:0 12px;
+        color: rgba(0,0,0,0.87) !important;
+    }
     
     .sidebar-nav-btn {
         font-size: 28px;
@@ -13,13 +53,32 @@
     }
     
     .content-container{
-        margin-left: 20rem;
+        margin-left: 16rem;
         padding: 1rem;
     }
     
     .sidenav-bars{
         display:none;
     }
+    
+    .menu-toggle{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .menu-toggle:hover{
+        text-decoration: none;
+    }
+    
+    .menu-toggle-sub{
+        background-color: rgba(0,0,0,0.05);
+        padding:0px;
+        font-weight:normal;
+        text-align:center;
+    }
+    
+    
+    
     /* ----------- Non-Retina Screens ----------- */
     @media screen 
       and (max-width: 992px) {
@@ -31,19 +90,137 @@
         .sidenav-bars{
             display:block;
         }
+        
+        .flex--day--box{
+            flex: 1 0 calc(100%/8);
+            margin: 5px;
+            height: 100px;
+        }
+    }
+    
+    /* -------------------------------------------- */
+    
+    .calender-day-box {
+        border: 1px solid #eee;
+        margin: 7px 0;
+        text-align: center;
+        line-height: 50px;
+        font-size: 28px;
+        background-color: tomato;
+        color: white;
+        padding: 0;
+    }
+    
+    .flex--day--box{
+        flex: 1 0 calc(100%/8);
+        margin: 5px;
+        height: 100px;
+    }
+    
+    
+    .weekdays {
+        margin: 0;
+        padding: 0;
+        color: #000;
+    }
+    
+    .weekdays li {
+        margin: 0;
+        text-align: center;
+        line-height: 50px;
+        font-size: 22px;
+        padding: 0;
+        
+        display: inline-block;
+        width: 13.6%;
+        text-align: center;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .days {
+        padding: 0 0 0 2.8 rem;
+        margin: 0;
+    }
+    
+    .days li {
+        border: 1px solid #eee;
+        margin: 7px 0;
+        text-align: center;
+        line-height: 50px;
+        font-size: 28px;
+        // background-color: #ffe0b2;
+        color: black;
+        padding: 0;
+        height: 100px;
+        
+        list-style-type: none;
+        display: inline-block;
+        width: 13.6%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    
+    .days li .active {
+        padding: 5px;
+        background: #1abc9c;
+        color: black !important;
+        background-color:orange;
+    }
+    
+    /* Add media queries for smaller screens */
+    @media screen and (max-width:720px) {
+        .weekdays li, .days li {width: 13.1%;}
+        #breadcrumb{margin-left:15rem;}
+    }
+    
+    @media screen and (max-width: 420px) {
+        .weekdays li, .days li {width: 12.5%;}
+        .days li .active {padding: 2px;}
+        #breadcrumb{margin-left:0px;}
+    }
+    
+    @media screen and (max-width: 400px) {
+        .weekdays li, .days li {width: 13%; font-size: 18px;}
+        #breadcrumb{margin-left:0px;}
+    }
+    
+    @media screen and (max-width: 290px) {
+        .weekdays li, .days li {width: 12.2%;}
+        #breadcrumb{margin-left:0px;}
     }
     
     /* -------------------------------------------- */
 }
-.sidenav{
-    z-index: -1;
-    background-color: transparent !important;
-}
 
-.sidenav {
-    margin-top: 4.29rem;
-}
-
-nav{
-    background-color: transparent !important;
+#breadcrumb{
+    display:flex; 
+    margin-left:15rem;
+    border-bottom:2px solid white;
+    
+    div{
+        margin-left:10px;
+        padding: 0.44rem;
+    }
+    
+    a{
+        color: #129dde !important;
+    }
+    
+    a.active{
+        color: black !important;
+    }
+    
+    .breadcrumb{
+        font-size:16px;
+        
+        i{
+            padding-right: 4px;
+            font-size: 12px;
+            margin-top: 0.5rem;
+        }
+    }
+    
+    
 }
