@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   var CodeValues = sequelize.define('CodeValues', {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    codeId: DataTypes.INTEGER
+    codeId: DataTypes.INTEGER,
+    codeValueId:DataTypes.INTEGER
   }, {});
   CodeValues.associate = function(models) {
     // associations can be defined here

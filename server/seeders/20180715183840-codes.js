@@ -15,11 +15,15 @@ module.exports = {
     return queryInterface.bulkInsert('Codes', [{
         name: 'Vechicle Type',
         description: 'App Supported Passenger Vechicles',
-        refId: 300
+        refId: 300,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },{
         name: 'Services',
         description: 'App Provided Services',
-        refId: 400
+        refId: 400,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }], {});
   },
 
