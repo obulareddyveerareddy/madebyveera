@@ -4,24 +4,8 @@ import M     from "materialize-css/dist/js/materialize.min.js";
 
 import RentalTransportAccounts from './RentalTransportAccounts';
 
-class AppService extends React.Component{
-    
-    constructor(props){
-        super(props);
-        this.state = {
-            auth:this.props.authData,
-            org:this.props.orgData
-        }
-    }
-    
-    componentWillMount(){
-        $(document).ready(function() {
-            M.Collapsible.init($('.collapsible'), {});
-        });
-    }
-    
-    render(){
-        return(
+const AppService = ({authData, orgData, vehicleData}) =>{
+    return(
             <ul className="collapsible">
                 <li className="active">
                     <div className="collapsible-header blue lighten-3">
@@ -32,7 +16,7 @@ class AppService extends React.Component{
                         <h6><i className="fa fa-bus" aria-hidden="true"></i>Manage Accounts for Rental Transport Businesses</h6>
                     </div>
                     <div className="collapsible-body lime lighten-5">
-                        <RentalTransportAccounts />
+                        <RentalTransportAccounts authData={authData} orgData={orgData} vehicleData={vehicleData} />
                     </div>
                 </li>
                 <li>
@@ -47,8 +31,5 @@ class AppService extends React.Component{
                 </li>
             </ul> 
         )
-    }
-    
 }
-
 export default AppService;

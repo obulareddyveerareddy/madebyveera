@@ -40,5 +40,21 @@
         background-color: #E91E63 !important;
         color: #fff;
     }
+        
+    form{
+        label{
+            -webkit-transform: translateY(-14px) scale(0.8) !important;
+            transform: translateY(-14px) scale(0.8) !important;
+            -webkit-transform-origin: 0 0 !important;
+            transform-origin: 0 0 !important;
+        }
+        
+        .label-select{
+            -webkit-transform: translateY(12px) scale(0.8) !important;
+            transform: translateY(12px) scale(0.8) !important;
+            -webkit-transform-origin: 0 0 !important;
+            transform-origin: 0 0 !important;
+        }
+    }
     
 }

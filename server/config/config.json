@@ -4,7 +4,7 @@
     "password": "veera@168",
     "database": "konten",
     "host": "localhost",
-    "dialect": "sqlite",
+    "dialect": "mysql",
     "storage": "./db.development.sqlite",
     "seed":{
       "dialect": "mysql"
